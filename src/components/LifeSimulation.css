@@ -1,0 +1,150 @@
+.life-simulation {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+/* Theme variations */
+.life-simulation.theme-default {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.life-simulation.theme-magic {
+  background-color: #f0e6ff;
+  color: #4b0082;
+}
+
+.life-simulation.theme-tech {
+  background-color: #e6f7ff;
+  color: #0066cc;
+}
+
+.life-simulation.theme-unstable {
+  background-color: #fff0f0;
+  color: #cc0000;
+}
+
+.simulation-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.simulation-controls button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.tab-container {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.tab-button.active {
+  border-bottom-color: #0066cc;
+}
+
+.tab-content {
+  min-height: 300px;
+}
+
+/* World View */
+.world-view {
+  display: flex;
+  gap: 20px;
+}
+
+.world-map {
+  flex: 2;
+  height: 400px;
+  background-color: #fff;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.character {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 1s ease;
+}
+
+.world-events {
+  flex: 1;
+}
+
+/* Diary View */
+.diary-view ul {
+  list-style: none;
+  padding: 0;
+}
+
+.diary-view li {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.event-time {
+  color: #666;
+  margin-right: 8px;
+}
+
+.event-character {
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+/* Stats View */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.character-stats {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.stat-bar {
+  height: 20px;
+  margin: 5px 0;
+  padding: 2px 5px;
+  color: white;
+  font-size: 12px;
+  border-radius: 3px;
+}
+
+.health {
+  background-color: #4CAF50;
+}
+
+.energy {
+  background-color: #2196F3;
+}
+
+.mood {
+  background-color: #FFC107;
+  color: #333;
+}

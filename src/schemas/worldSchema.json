@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "World Generation Schema",
+  "description": "Schema for generating random worlds via LLM",
+  "type": "object",
+  "properties": {
+    "timeline": {
+      "type": "string",
+      "enum": ["normal", "magical", "technological", "post-apocalyptic", "utopian"],
+      "description": "The dominant timeline/reality type"
+    },
+    "properties": {
+      "type": "object",
+      "properties": {
+        "reality_stability": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "How stable the reality is"
+        },
+        "magic_level": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Prevalence of magic in this world"
+        },
+        "tech_level": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Technological advancement level"
+        },
+        "population": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "World population density"
+        }
+      },
+      "required": ["reality_stability", "magic_level", "tech_level"]
+    },
+    "description": {
+      "type": "string",
+      "description": "A vivid description of this generated world"
+    }
+  },
+  "required": ["timeline", "properties"]
+}

@@ -1,0 +1,88 @@
+.world-view {
+  background: #f8f8f8;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.world-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.world-header h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.timeline {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+.timeline span:last-child {
+  font-weight: bold;
+}
+
+.world-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.world-section {
+  background: white;
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.world-section h3 {
+  margin-top: 0;
+  color: #444;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+.world-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.world-section li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.world-section li:last-child {
+  border-bottom: none;
+}
+
+.history {
+  background: #f8f8f8;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.history h2 {
+  margin-top: 0;
+}
+
+.history-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.history-item {
+  background: white;
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}

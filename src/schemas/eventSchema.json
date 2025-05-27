@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the event"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name/title of the event"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of what happened"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["political", "natural", "technological", "magical", "social", "military"],
+      "description": "Category of event"
+    },
+    "timeframe": {
+      "type": "string",
+      "enum": ["past", "present", "future"],
+      "description": "When the event occurs/happened"
+    },
+    "impact": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 10,
+      "description": "Scale of impact on the world (0-10)"
+    },
+    "locations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Places affected by the event"
+    },
+    "keyCharacters": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "IDs of characters involved"
+    },
+    "consequences": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Long-term effects of the event"
+    }
+  },
+  "required": ["id", "name", "description", "type", "impact"]
+}

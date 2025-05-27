@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the character"
+    },
+    "name": {
+      "type": "string",
+      "description": "Character's full name"
+    },
+    "age": {
+      "type": "number",
+      "description": "Character's age in years"
+    },
+    "gender": {
+      "type": "string",
+      "enum": ["male", "female", "non-binary", "other"],
+      "description": "Character's gender identity"
+    },
+    "appearance": {
+      "type": "string",
+      "description": "Physical description of the character"
+    },
+    "personality": {
+      "type": "string",
+      "description": "Key personality traits and behaviors"
+    },
+    "backstory": {
+      "type": "string",
+      "description": "Character's history and origins"
+    },
+    "motivations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Character's key motivations and goals"
+    },
+    "relationships": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "characterId": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["friend", "family", "romantic", "rival", "enemy"]
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": ["characterId", "type"]
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": ["id", "name", "personality", "backstory"]
+}

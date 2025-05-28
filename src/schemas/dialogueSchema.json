@@ -1,56 +1,85 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Dialogue Schema",
   "type": "object",
   "properties": {
     "id": {
       "type": "string",
-      "description": "Unique identifier for the dialogue"
+      "description": "Unique dialogue identifier"
     },
     "participants": {
       "type": "array",
       "items": {
         "type": "string"
       },
-      "minItems": 2,
-      "description": "IDs of characters involved in the dialogue"
+      "minItems": 2
     },
-    "context": {
-      "type": "string",
-      "description": "Situation/context for the conversation"
-    },
-    "tone": {
-      "type": "string",
-      "enum": ["formal", "casual", "hostile", "friendly", "romantic", "professional"],
-      "description": "Overall tone of the dialogue"
-    },
-    "exchanges": {
+    "lines": {
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
           "speaker": {
-            "type": "string",
-            "description": "ID of the speaking character"
+            "type": "string"
           },
           "text": {
-            "type": "string",
-            "description": "The spoken dialogue"
+            "type": "string"
           },
           "emotion": {
             "type": "string",
-            "enum": ["neutral", "happy", "angry", "sad", "surprised", "confused"],
-            "description": "Emotional state while speaking"
+            "enum": ["neutral", "happy", "angry", "sad", "surprised"]
+          },
+          "choices": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string"
+                },
+                "nextLineId": {
+                  "type": "string"
+                },
+                "effects": {
+                  "type": "object",
+                  "properties": {
+                    "relationshipChange": {
+                      "type": "number",
+                      "minimum": -1,
+                      "maximum": 1
+                    }
+                  }
+                }
+              },
+              "required": ["text"]
+            }
           }
         },
         "required": ["speaker", "text"]
-      },
-      "minItems": 3,
-      "description": "Sequence of dialogue exchanges"
+      }
     },
-    "outcome": {
-      "type": "string",
-      "description": "Result/conclusion of the conversation"
+    "outcomes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "condition": {
+            "type": "string"
+          },
+          "effects": {
+            "type": "object",
+            "properties": {
+              "worldState": {
+                "type": "object"
+              },
+              "characterState": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
     }
   },
-  "required": ["participants", "exchanges"]
+  "required": ["id", "participants", "lines"]
 }

@@ -1,13 +1,19 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "World Generation Schema",
-  "description": "Schema for generating random worlds via LLM",
+  "title": "World State Schema",
   "type": "object",
   "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique world identifier"
+    },
+    "dimensional_id": {
+      "type": "string",
+      "description": "Unique dimensional identifier"
+    },
     "timeline": {
       "type": "string",
-      "enum": ["normal", "magical", "technological", "post-apocalyptic", "utopian"],
-      "description": "The dominant timeline/reality type"
+      "description": "Current timeline state"
     },
     "properties": {
       "type": "object",
@@ -16,33 +22,77 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "How stable the reality is"
+          "description": "Base stability of this reality"
         },
         "magic_level": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "Prevalence of magic in this world"
+          "maximum": 1
         },
         "tech_level": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "Technological advancement level"
+          "maximum": 1
         },
-        "population": {
+        "dimensional_flux": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "World population density"
+          "description": "Rate of dimensional anomalies"
         }
-      },
-      "required": ["reality_stability", "magic_level", "tech_level"]
+      }
     },
-    "description": {
-      "type": "string",
-      "description": "A vivid description of this generated world"
+    "active_mythologies": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["norse", "greek", "christian", "egyptian", "lovecraftian"]
+      }
+    },
+    "possible_branches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "trigger": {
+            "type": "string"
+          },
+          "timeline": {
+            "type": "string"
+          },
+          "probability": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "id": {
+            "type": "string"
+          },
+          "dimensional_impact": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Impact on dimensional stability"
+          }
+        }
+      }
+    },
+    "connected_dimensions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "dimensional_id": {
+            "type": "string"
+          },
+          "stability_link": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        }
+      }
     }
   },
-  "required": ["timeline", "properties"]
+  "required": ["id", "dimensional_id", "timeline", "properties"]
 }

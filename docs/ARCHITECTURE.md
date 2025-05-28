@@ -121,3 +121,94 @@ class GameInterface {
 2. Build world simulation foundation
 3. Develop player interface components
 4. Integrate systems and test interactions
+
+## AI System Integration
+
+### AIController
+Central coordination point for all AI agents:
+```javascript
+class AIController {
+  constructor() {
+    this.gameMaster = new AIGameMaster();
+    this.memory = new NarrativeMemory();
+    this.performance = new PerformanceTracker();
+  }
+}
+```
+
+### Agent Coordination
+- GameMaster orchestrates world state
+- NarrativeMemory stores and recalls events
+- PerformanceTracker monitors system health
+- All agents communicate through AIController
+
+### React Integration
+```mermaid
+graph LR
+    A[App] --> B[AIProvider]
+    B --> C[useAIState]
+    B --> D[useAIActions]
+    C --> E[WorldView]
+    D --> F[Controls]
+```
+
+### Performance Monitoring
+- Tracks agent calls and response times
+- Measures memory usage
+- Provides real-time metrics to UI
+- Helps identify bottlenecks
+
+## Development Environment
+
+### WebSocket Removal and Full Page Reload
+
+**Original Implementation:**
+- Used WebSocket-based HMR for fast updates
+- Provided near-instant feedback during development
+- Complex setup with potential stability issues
+
+**Removal Rationale:**
+1. **Stability Issues**: WebSocket connections were unreliable in some network environments
+2. **Complexity**: Added unnecessary infrastructure for development
+3. **Debugging Challenges**: WebSocket traffic harder to inspect than HTTP
+
+**New Development Workflow:**
+- Full page reload on file changes
+- Simple and reliable development experience
+- No WebSocket connection attempts
+- Manual refresh when needed (Ctrl/Cmd + R)
+
+**Configuration:**
+```javascript
+server: {
+  port: 5173,
+  host: true,
+  watch: {
+    usePolling: true,  // Filesystem polling
+    interval: 1000     // 1 second poll interval
+  }
+}
+```
+
+**Benefits:**
+1. **Simplified Architecture**: No WebSocket dependency
+2. **Better Reliability**: Works consistently across all environments
+3. **Easier Debugging**: Standard HTTP-only traffic
+4. **Reduced Complexity**: Fewer moving parts in dev environment
+
+## Testing Approach
+
+### Unit Tests
+- Individual agent functionality
+- Controller coordination
+- Performance tracking
+
+### Integration Tests
+- Agent interactions
+- State propagation
+- UI updates
+
+### Performance Tests
+- Response time benchmarks
+- Memory usage limits
+- Stress testing

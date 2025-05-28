@@ -1,68 +1,134 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Character Schema",
   "type": "object",
   "properties": {
     "id": {
       "type": "string",
-      "description": "Unique identifier for the character"
+      "description": "Unique character identifier"
     },
     "name": {
       "type": "string",
-      "description": "Character's full name"
+      "description": "Character's name"
     },
-    "age": {
-      "type": "number",
-      "description": "Character's age in years"
-    },
-    "gender": {
+    "dimensional_signature": {
       "type": "string",
-      "enum": ["male", "female", "non-binary", "other"],
-      "description": "Character's gender identity"
+      "description": "Original dimension identifier"
     },
-    "appearance": {
-      "type": "string",
-      "description": "Physical description of the character"
+    "traits": {
+      "type": "object",
+      "properties": {
+        "personality": {
+          "type": "object",
+          "properties": {
+            "core": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["extroverted", "introverted", "analytical", "creative", "kind", "selfish"]
+              }
+            },
+            "values": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["honesty", "loyalty", "ambition", "curiosity"]
+              }
+            }
+          }
+        },
+        "appearance": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
     },
-    "personality": {
-      "type": "string",
-      "description": "Key personality traits and behaviors"
-    },
-    "backstory": {
-      "type": "string",
-      "description": "Character's history and origins"
-    },
-    "motivations": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      },
-      "description": "Character's key motivations and goals"
-    },
-    "relationships": {
+    "memories": {
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
-          "characterId": {
+          "id": {
             "type": "string"
           },
-          "type": {
-            "type": "string",
-            "enum": ["friend", "family", "romantic", "rival", "enemy"]
-          },
-          "description": {
+          "event": {
             "type": "string"
+          },
+          "timestamp": {
+            "type": "number"
+          },
+          "dimensional_signature": {
+            "type": "string"
+          },
+          "emotional_weight": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
           }
         },
-        "required": ["characterId", "type"]
+        "required": ["id", "event", "timestamp"]
       }
     },
-    "skills": {
-      "type": "array",
-      "items": {
-        "type": "string"
+    "relationships": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "affinity": {
+            "type": "number",
+            "minimum": -1,
+            "maximum": 1
+          },
+          "trust": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "history": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "event": {
+                  "type": "string"
+                },
+                "impact": {
+                  "type": "number",
+                  "minimum": -1,
+                  "maximum": 1
+                },
+                "timestamp": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "stats": {
+      "type": "object",
+      "properties": {
+        "health": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "energy": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "dimensional_stability": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Resistance to dimensional anomalies"
+        }
       }
     }
   },
-  "required": ["id", "name", "personality", "backstory"]
+  "required": ["id", "name", "dimensional_signature"]
 }

@@ -1,7 +1,15 @@
-import { DeepseekAgent } from './DeepseekAgent';
-import eventSchema from '../schemas/eventSchema.json';
+import { DeepseekAgent } from './DeepseekAgent.js';
 
 export class EventGenerator extends DeepseekAgent {
+  async loadSchema() {
+    const response = await fetch('/src/schemas/eventSchema.json');
+    return await response.json();
+  }
+
+  async generateEvent() {
+    const schema = await this.loadSchema();
+    // Use schema here
+  }
   constructor() {
     super(
       'EventGenerator',

@@ -3,7 +3,7 @@ export const DEEPSEEK_CONFIG = {
   ENDPOINTS: {
     CHAT: '/chat/completions'
   },
-  API_KEY: process.env.DEEPSEEK_API_KEY
+  API_KEY: import.meta.env.VITE_DEEPSEEK_API_KEY
 };
 
 export function validateConfig() {
@@ -14,5 +14,5 @@ export function validateConfig() {
 
 // Example environment file
 export const ENV_EXAMPLE = `# Deepseek API Configuration
-DEEPSEEK_API_KEY=your_api_key_here
+VITE_DEEPSEEK_API_KEY=your_api_key_here
 `;

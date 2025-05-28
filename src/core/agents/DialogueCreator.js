@@ -1,7 +1,15 @@
-import { DeepseekAgent } from './DeepseekAgent';
-import dialogueSchema from '../schemas/dialogueSchema.json';
+import { DeepseekAgent } from './DeepseekAgent.js';
 
 export class DialogueCreator extends DeepseekAgent {
+  async loadSchema() {
+    const response = await fetch('/src/schemas/dialogueSchema.json');
+    return await response.json();
+  }
+
+  async generateDialogue() {
+    const schema = await this.loadSchema();
+    // Use schema here
+  }
   constructor() {
     super(
       'DialogueCreator',

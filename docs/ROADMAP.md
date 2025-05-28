@@ -107,6 +107,23 @@ gantt
 - Player influence
 - Timeline branching UI
 
+## 5. Backend Streamlining & Efficiency
+
+### Goals
+- Improve modularity and reduce tight coupling between AI agents and services.
+- Enhance system stability and predictability.
+- Optimize performance for core backend processes.
+
+### Key Initiatives
+- **Refactor AI Agent Communication**: Define clear interfaces and reduce direct dependencies between agents. Centralize interactions through `AIController` where appropriate.
+- **State Management Review**: Ensure consistent and predictable state updates across all backend modules. Evaluate `worldState` for potential simplifications and ensure a single source of truth for shared state.
+- **API Definition for Core Services**: Formalize APIs for `LLMService`, `NarrativeMemory`, `ConsequenceEngine`, etc., to improve modularity and testability.
+- **Backend Test Coverage Expansion**: Increase unit and integration tests for critical backend logic, especially for agent interactions, state mutations, and error pathways.
+- **Performance Profiling and Optimization**: Systematically identify and address bottlenecks in AI agent processing, LLM calls, and the world simulation loop. Implement caching strategies where beneficial.
+- **Error Handling and Resilience**: Improve error handling mechanisms in backend services to prevent cascading failures and provide clearer diagnostic information.
+- **Configuration Management**: Centralize and simplify configuration for AI agents and services.
+- **Logging and Monitoring**: Enhance logging for better traceability and implement comprehensive monitoring for system health and performance.
+
 ## 4. Deployment Strategy
 
 ### Staging Environment
@@ -136,6 +153,7 @@ gantt
 ## 5. Timeline Estimates
 
 - **Phase 1 (June 2025)**: Testing foundation + docs (4 weeks)
-- **Phase 2 (July 2025)**: Core features + staging (4 weeks) 
+- **Phase 2 (July 2025)**: Core features + staging (4 weeks)
 - **Phase 3 (August 2025)**: Advanced features + rollout (4 weeks)
 - **Phase 4 (September 2025)**: Optimization + monitoring (4 weeks)
+- **Ongoing (Q3-Q4 2025)**: Backend Streamlining & Efficiency initiatives.

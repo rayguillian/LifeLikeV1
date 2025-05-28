@@ -1,7 +1,15 @@
-import { DeepseekAgent } from './DeepseekAgent';
-import worldSchema from '../schemas/worldSchema.json';
+import { DeepseekAgent } from './DeepseekAgent.js';
 
 export class WorldGenerator extends DeepseekAgent {
+  async loadSchema() {
+    const response = await fetch('/src/schemas/worldSchema.json');
+    return await response.json();
+  }
+
+  async generateWorld() {
+    const schema = await this.loadSchema();
+    // Use schema here
+  }
   constructor() {
     super(
       'WorldGenerator',

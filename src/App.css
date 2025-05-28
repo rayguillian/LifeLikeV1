@@ -10,16 +10,22 @@
   margin-bottom: 2rem;
 }
 
+.app-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
 .generate-btn {
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
   background: #4CAF50;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background 0.3s;
-  margin-bottom: 2rem;
 }
 
 .generate-btn:hover {
@@ -31,39 +37,81 @@
   cursor: not-allowed;
 }
 
-.main-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+.progress-btn, .pause-btn, .resume-btn {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
-.world-description {
-  background: #f8f8f8;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  font-style: italic;
-}
+.progress-btn { background: #2196F3; }
+.progress-btn:hover { background: #1e88e5; }
+.progress-btn:disabled { background: #cccccc; cursor: not-allowed; }
 
-.world-status {
-  background: #f8f8f8;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
+.pause-btn { background: #ff9800; }
+.pause-btn:hover { background: #f57c00; }
+.pause-btn:disabled { background: #cccccc; cursor: not-allowed; }
 
-.world-status h2 {
-  color: #333;
-  margin-top: 0;
+.resume-btn { background: #4CAF50; } /* Same as generate for consistency, or a different green */
+.resume-btn:hover { background: #45a049; }
+.resume-btn:disabled { background: #cccccc; cursor: not-allowed; }
+
+
+/* Ensure header elements are stacked if they wrap */
+.header h1 {
   margin-bottom: 1rem;
 }
 
-.timeline {
+.main-content {
   display: flex;
-  justify-content: space-between;
-  font-size: 1.1rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.world-view-container {
+  width: 100%;
+  max-width: 800px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.world-view-container h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.world-view-container p {
+  line-height: 1.6;
+  color: #555;
+}
+
+.timeline {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #777;
 }
 
 .timeline span:last-child {
   font-weight: bold;
 }
+
+.metrics-panel {
+  background: #f0f0f0;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.metrics-panel h2, .metrics-panel h3 {
+  margin-top: 0;
+  color: #333;
+}
+.metrics-panel ul { list-style-type: none; padding-left: 0;}
+.metrics-panel li { margin-bottom: 0.5em; }
